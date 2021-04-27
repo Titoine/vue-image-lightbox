@@ -34,20 +34,16 @@
               mode="out-in"
               :name="modalImageTransitionName"
             >
-              <img
-                v-if="media[select].type !== 'video'"
-                :key="media[select].src"
-                v-lazy="{
-                  src: media[select].src,
-                  loading: media[select].src,
-                  error: media[select].src,
-                }"
-                :srcset="media[select].srcset || ''"
-                class="vue-lb-modal-image"
-                :alt="media[select].caption"
+
+              <iframe
+                v-if="media[select].type === 'youtube'"
+                :width="media[select].width"
+                :height="media[select].height"
+                :src="media[select].youtubeUrl"
               >
+              </iframe>
               <video
-                v-else
+                v-else-if="media[select].type === 'video'"
                 ref="video"
                 :key="media[select].sources[0].src"
                 :width="media[select].width"
@@ -62,6 +58,18 @@
                   :type="source.type"
                 >
               </video>
+              <img
+              v-else
+              :key="media[select].src"
+              v-lazy="{
+                  src: media[select].src,
+                  loading: media[select].src,
+                  error: media[select].src,
+                }"
+              :srcset="media[select].srcset || ''"
+              class="vue-lb-modal-image"
+              :alt="media[select].caption"
+            >
             </transition>
 
             <slot name="customCaption">
