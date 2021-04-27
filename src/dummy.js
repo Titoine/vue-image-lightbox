@@ -1,6 +1,14 @@
 export const media = [
   {
     thumb: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRx1TQ3PfnhWmLUWcxrGj3atDCZVTVBKetMOWVVQ4ipIStW03pY',
+    youtubeUrl:'https://www.youtube.com/embed/Wx22z0gwoxY?showinfo=0&amp;autohide=1&amp;modestbranding=1&amp;rel=0&amp;vq=hd720&amp;hd=1&amp;wmode=opaque',
+    width: 800,
+    height: 600,
+    caption: '<h4>JDG</h4>',
+    type: 'youtube',
+  },
+  {
+    thumb: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRx1TQ3PfnhWmLUWcxrGj3atDCZVTVBKetMOWVVQ4ipIStW03pY',
     sources: [
       {
         src: 'https://www.w3schools.com/html/mov_bbb.mp4',
