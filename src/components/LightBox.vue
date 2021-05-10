@@ -96,52 +96,53 @@
               </div>
             </div>
           </div>
-        </div> <!-- .vue-lb-content -->
-        <div class="vue-lb-thumbnail-wrapper">
-          <div
-            v-if="showThumbs"
-            class="vue-lb-thumbnail"
-          >
-            <button
-              v-if="media.length > 1"
-              type="button"
-              class="vue-lb-thumbnail-arrow vue-lb-thumbnail-left"
-              :title="previousThumbText"
-              @click.stop="previousImage()"
-            >
-              <slot name="previousThumb">
-                <LeftArrowIcon />
-              </slot>
-            </button>
-
+          <!-- .vue-lb-content -->
+          <div class="vue-lb-thumbnail-wrapper">
             <div
-              v-for="(image, index) in imagesThumb"
-              v-show="index >= thumbIndex.begin && index <= thumbIndex.end"
-              :key="typeof image.src === 'string' ? `${image.src}${index}` : index"
-              v-lazy:background-image="image"
-              :class="'vue-lb-modal-thumbnail' + (select === index ? '-active' : '')"
-              @click.stop="showImage(index)"
+              v-if="showThumbs"
+              class="vue-lb-thumbnail"
             >
-              <slot
-                v-if="image.type"
-                name="videoIcon"
+              <button
+                v-if="media.length > 1"
+                type="button"
+                class="vue-lb-thumbnail-arrow vue-lb-thumbnail-left"
+                :title="previousThumbText"
+                @click.stop="previousImage()"
               >
-                <VideoIcon />
-              </slot>
-            </div>
+                <slot name="previousThumb">
+                  <LeftArrowIcon />
+                </slot>
+              </button>
 
-            <button
-              v-if="media.length > 1"
-              type="button"
-              class="vue-lb-thumbnail-arrow vue-lb-thumbnail-right"
-              :title="nextThumbText"
-              @click.stop="nextImage()"
-            >
-              <slot name="nextThumb">
-                <RightArrowIcon />
-              </slot>
-            </button>
-          </div> <!-- .vue-lb-thumbnail -->
+              <div
+                v-for="(image, index) in imagesThumb"
+                v-show="index >= thumbIndex.begin && index <= thumbIndex.end"
+                :key="typeof image.src === 'string' ? `${image.src}${index}` : index"
+                v-lazy:background-image="image"
+                :class="'vue-lb-modal-thumbnail' + (select === index ? '-active' : '')"
+                @click.stop="showImage(index)"
+              >
+                <slot
+                  v-if="image.type"
+                  name="videoIcon"
+                >
+                  <VideoIcon />
+                </slot>
+              </div>
+
+              <button
+                v-if="media.length > 1"
+                type="button"
+                class="vue-lb-thumbnail-arrow vue-lb-thumbnail-right"
+                :title="nextThumbText"
+                @click.stop="nextImage()"
+              >
+                <slot name="nextThumb">
+                  <RightArrowIcon />
+                </slot>
+              </button>
+            </div> <!-- .vue-lb-thumbnail -->
+          </div>
         </div>
         <button
           v-if="media.length > 1"
